@@ -47,19 +47,18 @@ if (chrome.getInjected('auth.type') !== 'kerberos' && chrome.getInjected('auth.t
         securityAccessControl.logout();
       }
       const chromeInjected = chrome.getInjected();
-      console.log(chromeInjected.securityDynamic.user.username);
-      let logoutButtonLabel = chromeInjected.securityDynamic.user.username;
-      if (chromeInjected && chromeInjected.sgDynamic && chromeInjected.securityDynamic.user) {
+      let logoutButtonLabel = "Logout";
+      if (chromeInjected && chromeInjected.securityDynamic && chromeInjected.securityDynamic.user) {
         if (!chromeInjected.securityDynamic.user.isAnonymousAuth) {
           logoutButtonLabel = chromeInjected.securityDynamic.user.username;
         } else {
           logoutButtonLabel = "Login";
         }
       }
-      //console.log(ctrl.username);
       ReactDOM.render(
-        <div className="kbnGlobalNavLink__icon" style={{padding: "15px"}} onClick={onClick} iconType="exit"><i className="fa fa-sign-out securityLogoutLink__icon-image"></i> {logoutButtonLabel}</div>
-       ,
+        <div className="kbnGlobalNavLink__icon" style={{padding: "15px"}} onClick={onClick}>
+            <i className="fa fa-sign-out securityLogoutLink__icon-image"></i> {logoutButtonLabel}
+        </div>,
         el
       );
       return () => ReactDOM.unmountComponentAtNode(el);
