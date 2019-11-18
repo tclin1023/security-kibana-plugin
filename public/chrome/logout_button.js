@@ -35,8 +35,9 @@ import { uiModules } from 'ui/modules';
 uiModules
 .get('kibana')
 .directive('securityLogoutButton', function (securityAccessControl) {
+   console.log("logout_button.js start");
   return {
-    template: require('plugins/opendistro_security/chrome/logout_button.html'),
+    template: require('plugins/opendistro_security/chrome/logout_button.html').default,
     replace: true,
     restrict: 'E',
     link: ($scope) => {
